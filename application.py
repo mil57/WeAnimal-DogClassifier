@@ -49,6 +49,6 @@ def hello():
 
 # Main classifier service, accpet a URL to the picute as GET parameter
 @app.route('/<path:subpath>')
-def show_subpath(subpath):
+def classify(subpath):
     return download_and_predict(subpath, "test.jpg")
     
