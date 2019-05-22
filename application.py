@@ -26,21 +26,29 @@ model._make_predict_function()
 def download_and_predict(url, filename):
     # download and save
     response = requests.get(url)
+    
+    print("Got img!************* \n")
+    
     img = Image.open(BytesIO(response.content))
     img = img.convert('RGB')
     img = img.resize((224, 224))
-    img.save(filename)
 
+    print("PIL************* \n")
+    
     # predict
     img = np.array(img)
     img = preprocess_input(img)
     probs = model.predict(np.expand_dims(img, axis=0))
+    
+    print("Predicted!************* \n")
     
     result = []
     for idx in probs.argsort()[0][::-1][:5]:
         #string = "{:.2f}%"
         #string = "{:.2f}%".format(probs[0][idx]*100)
         result.append("{:.2f}%".format(probs[0][idx]*100)+ "\t"+ label[idx].split("-")[-1])
+        
+    print("About to return!************* \n")
     
     # cLEAN UP AND RETURN
     return json.dumps(result)
