@@ -8,6 +8,9 @@ from PIL import Image
 from skimage.io import imread
 from keras.applications.densenet import DenseNet121, preprocess_input
 import numpy as np
+import requests
+from io import BytesIO
+
 
 # Init machine learning model
 
@@ -22,15 +25,14 @@ model._make_predict_function()
 
 def download_and_predict(url, filename):
     # download and save
-    print(url)
-    os.system("curl -s {} -o {}".format(url, filename))
-    img = Image.open(filename)
+    response = requests.get(url)
+    img = Image.open(BytesIO(response.content))
     img = img.convert('RGB')
     img = img.resize((224, 224))
     img.save(filename)
 
     # predict
-    img = imread(filename)
+    img = np.array(img)
     img = preprocess_input(img)
     probs = model.predict(np.expand_dims(img, axis=0))
     
@@ -41,7 +43,6 @@ def download_and_predict(url, filename):
         result.append("{:.2f}%".format(probs[0][idx]*100)+ "\t"+ label[idx].split("-")[-1])
     
     # cLEAN UP AND RETURN
-    os.remove(filename)
     return json.dumps(result)
 
 
