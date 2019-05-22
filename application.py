@@ -37,7 +37,9 @@ def download_and_predict(url, filename):
     
     # predict
     img = np.array(img)
+    print("conversion!************* \n")
     img = preprocess_input(img)
+    print("preprocessed!************* \n")
     probs = model.predict(np.expand_dims(img, axis=0))
     
     print("Predicted!************* \n")
