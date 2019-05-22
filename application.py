@@ -20,7 +20,7 @@ with open('model.json') as json_file:
     model = model_from_json(json_string)
 
 model.load_weights('dog_breed_classifier_model.h5')
-model._make_predict_function()
+# model._make_predict_function()
 
 
 def download_and_predict(url, filename):
