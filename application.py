@@ -60,15 +60,18 @@ def download_and_predict(url, filename):
 from flask import Flask
 app = Flask(__name__)
 
+x = "Hello Hello"
 
 # Index, and test method
 @app.route("/")
 def hello():
-    return "Hello World!"
+    return x
 
 
 # Main classifier service, accpet a URL to the picute as GET parameter
 @app.route('/<path:subpath>')
 def classify(subpath):
-    return download_and_predict(subpath, "test.jpg")
+    global x
+    x = download_and_predict(subpath, "test.jpg")
+    return "whatever"
 
