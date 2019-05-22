@@ -1,1 +1,1 @@
-web: gunicorn app:app --preload --timeout 600
+web: FLASK_APP=app.py flask run
