@@ -46,9 +46,7 @@ def download_and_predict(url, filename):
     
     result = []
     for idx in probs.argsort()[0][::-1][:5]:
-        #string = "{:.2f}%"
-        #string = "{:.2f}%".format(probs[0][idx]*100)
-        result.append("{:.2f}%".format(probs[0][idx]*100)+ "\t"+ label[idx].split("-")[-1])
+        result.append("{:.2f}%".format(probs[0][idx]*100) + "\t" + label[idx].split("-")[-1])
         
     print("About to return!************* \n")
     
@@ -61,10 +59,11 @@ from flask import Flask
 app = Flask(__name__)
 
 
+
 # Index, and test method
 @app.route("/")
 def hello():
-    return "Hello World!"
+    return "hiiiiiiiiii wooooooolrd"
 
 
 # Main classifier service, accpet a URL to the picute as GET parameter
