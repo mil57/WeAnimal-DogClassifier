@@ -1,18 +1,18 @@
 ---
-topic: Python Flask sample for Azure App Service (Linux)
-languages:
-  - python
-products:
-  - Azure App Service
-  - Azure Web Apps
+topic: WeAnimal-DogClassifier
+languages: python
+Platform: Heroku
+Framwork: Flask
 ---
 
-# Python Flask sample for Azure App Service (Linux)
+This is a simple ML classifier for breeds of dog
 
-This is a minimal sample app that demonstrates how to run a Python Flask application on Azure App Service on Linux.
+# How to use
+https://wedog.herokuapp.com/ 
+check the status of the app. Returns "Hiiiiii Woooorld!"
 
-For more information, please see the [Python on App Service quickstart](https://docs.microsoft.com/en-us/azure/app-service/containers/quickstart-python).
-
-# Contributing
-
-This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/). For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+https://wedog.herokuapp.com/<URL to a picture of a dog>
+Classify the dog in the picture. Return a string list of 5 most likely breeds: ["Probability\tBreed",...] 
+  Example:
+  GET https://wedog.herokuapp.com/https://cdn1.medicalnewstoday.com/content/images/articles/322/322868/golden-retriever-puppy.jpg
+  Response: ["99.93%\tgolden_retriever", "0.04%\tBrittany_spaniel", "0.02%\tLabrador_retriever", "0.01%\tLeonberg", "0.00%\tChesapeake_Bay_retriever"]
