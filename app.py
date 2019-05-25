@@ -13,8 +13,8 @@ from io import BytesIO
 
 
 # Init machine learning model
-with open('labels') as json_file_labels:
-    labels = json.load(json_file_labels)
+with open('labels',"r") as json_file_labels:
+    labels = json.loads(json_file_labels.read().replace("\'","\""))
 
 with open('model.json') as json_file:
     json_string = json.load(json_file)
