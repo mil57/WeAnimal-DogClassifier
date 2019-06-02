@@ -21,10 +21,10 @@ Keras weight file for the machine learning model
 ### model.json
 Keras architecture file for the machine learning model
 
-# labels
+### labels
 Contains labels for the machine learning model
 
-# Procfile
+### Procfile
 Start script for heroku deployment
 
 ## How to deploy (Locally)
@@ -38,9 +38,9 @@ pip install -r requirements.txt
 Flask run
 ```
 
-# For deployment on Heroku, just deploy this branch
+## For deployment on Heroku, just deploy this branch
 
-## How to use
+# How to use
 ### GET https://wedog.herokuapp.com/ 
 Check the status of the app. Returns "Hiiiiii Woooorld!" if running
 
